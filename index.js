@@ -22,8 +22,8 @@ const db = mysql.createConnection(
 const registry = () => {
   inquirer.prompt([
     {
-      Type: `list`,
-      name: `selections`,
+      Type: 'list',
+      name: 'selections',
       message: "Please select an option from the list below to continue",
       choices: ["All Departments", "All Team Roles", "All Employees", "Add Department", "Add Team Role", "Add Employee", "Update Employee", "Exit"],
     }
@@ -71,12 +71,12 @@ registry()
 const genDepart = () =>{
   inquirer.prompt([
     {
-      type: `input`,
-      name: `department`,
-      message: `New department name?`
+      type: 'input',
+      name: 'department',
+      message: "New department name?"
     }
   ]).then((ans => {
-    db.query(`INSERT INTO department(name) VALUES (?)`, [ans.department], (err,result) => {
+    db.query('INSERT INTO department(name) VALUES (?)', [ans.department], (err,result) => {
       console.log(`${ans.department} has been added to the database.`)
       registry()
     })
@@ -86,23 +86,23 @@ const genDepart = () =>{
 const genRole = () =>{
   inquirer.prompt([
     {
-      type: `input`,
-      name: `newRole`,
+      type: 'input',
+      name: 'newRole',
       message: "New Role in Company?",
   },
   {
-      type: `number`,
-      name: `salary`,
+      type: 'number',
+      name: 'salary',
       message: "Role Salary?",
   },
   {
-      type: `list`,
-      name: `department`,
+      type: 'list',
+      name: 'department',
       message: "Role belongs to what Department?",
-      choices: `SELECT department.name AS name, department.id AS value FROM department`,
+      choices: 'SELECT department.name AS name, department.id AS value FROM department',
   },
   ]).then((ans => {
-    db.query(`INSERT INTO role(title, salary, department_id) VALUES (?, ?, ?)`,
+    db.query('INSERT INTO role(title, salary, department_id) VALUES (?, ?, ?)',
     [
       ans.newRole,
       ans.salary,
@@ -117,28 +117,28 @@ const genRole = () =>{
 const genEmployee = () =>{
   inquirer.prompt([
     {
-      type: `input`,
-      name: `first`,
+      type: 'input',
+      name: 'first',
       message: "Employee's first name?",
   },
   {
-      type: `input`,
-      name: `last`,
+      type: 'input',
+      name: 'last',
       message: "Employee's last name?",
   },
   {
-      type: `list`,
-      name: `role`,
+      type: 'list',
+      name: 'role',
       message: "Employee Role?",
-      choices: `SELECT role.title AS name, role.id AS value FROM role`,
+      choices: 'SELECT role.title AS name, role.id AS value FROM role',
   },
   {
-      type: `input`,
-      name: `manager`,
+      type: 'input',
+      name: 'manager',
       message: "Manager ID?"
   }
   ]).then((ans => {
-    db.query(`INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`,
+    db.query('INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)',
     [
       ans.first,
       ans.last,
@@ -154,16 +154,16 @@ const genEmployee = () =>{
 const updateEmployee = () => {
   inquirer.prompt([
     {
-      type: `list`,
-      name: `employee`,
+      type: 'list',
+      name: 'employee',
       message: "Which Employee to Update?",
-      choices: `SELECT employee.first_name AS name, employee.id AS value FROM employee`
+      choices: 'SELECT employee.first_name AS name, employee.id AS value FROM employee'
   },
   {
-      type: `list`,
-      name: `role`,
+      type: 'list',
+      name: 'role',
       message: "New Role?",
-      choices: `SELECT role.title AS name, role.id AS value FROM role`
+      choices: 'SELECT role.title AS name, role.id AS value FROM role'
   },
   ]).then((ans => {
     db.query(`UPDATE employee SET role_id = ${ans.role} WHERE name = ${ans.employee}`), (err,result) => {
