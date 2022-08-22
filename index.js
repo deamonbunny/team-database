@@ -16,7 +16,7 @@ const db = mysql.createConnection(
       password: process.env.PASSWORD,
       database: process.env.DATABASE
     },
-    console.log(`Connected to the team_db database.`)
+    console.log(`Connected to the company_db database.`)
   );
 
 
@@ -41,6 +41,39 @@ const registry = () => {
       ]
     }
   ]).then((ans => {
-    
-  }))
-}
+      //Checks to see if all departments selected
+    if(ans.selections === "All Departments") {
+      db.query(`SELECT * FROM department`, (err,result) => {
+        console.log(`Here is the department list`);
+        console.table(result);
+        registry()
+      });
+      //Checks to see if team roles selected
+    }else if (ans.selections === "All Team Roles") {
+      db.query(`SELECT * FROM role`, (err,result) => {
+        console.log(`Here are the Team Roles`);
+        console.table(result);
+        registry()
+      });
+      //Checks to see if All Employees is selected
+    }else if (ans.selections === "All Employees") {
+      db.query(`SELECT * FROM employee`, (err,result) => {
+        console.log(`Here are the companies employees`);
+        console.table(result);
+        registry()
+      });
+      //Checks to see if Add Department is selected
+    }else if (ans.selections === "Add Department") {
+      genDepart()
+      //Checks to see if Add Team Role is selected
+    }else if (ans.selections === "Add Team Role") {
+      genRole()
+      //Checks to see if Add Employee is selected
+    }else if (ans.selections === "Add Employee") {
+      genEmployee()
+      //Checks to see if Exit is selected
+    }else {
+      console.log("Thank You, have a nice day!")
+    }}
+))};
+registry()
