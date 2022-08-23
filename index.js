@@ -27,12 +27,6 @@ const registry = () => {
       message: "Please select an option from the list below to continue",
       name: 'selections',
     }
-    // {
-    //   type: 'list',
-    //   choices: ["View All Departments", "View All Roles", "View All Employees", "Add a Department", "Add a Role", "Add an Employee", "Update Employee Role", "Quit"],
-    //   message: 'Please select one from the list below.',
-    //   name: 'selections',
-    // }
   ]).then((ans => {
       //Checks to see if all departments selected
     if(ans.selections === "All Departments") {

@@ -20,13 +20,3 @@ VALUES  ("Alex", "Palson", 3, null),
         ("Meryl", "Stark", 2, null),
         ("Butch", "Cassidy", 1, null),
         ("Sundance", "Kid", 3, 1);
-
--- VALUES  ("Alex", "Palson", 3),
---         ("Sigmund", "Freud", 1),
---         ("John", "Jones", 2),
---         ("Ayaka", "Kirihara", 1),
---         ("Harold", "Jenkins", 3),
---         ("Thomas", "Goat", 2),
---         ("Meryl", "Stark", 2),
---         ("Butch", "Cassidy", 1),
---         ("Sundance", "Kid", 3);        
