@@ -22,11 +22,17 @@ const db = mysql.createConnection(
 const registry = () => {
   inquirer.prompt([
     {
-      Type: 'list',
-      name: 'selections',
-      message: "Please select an option from the list below to continue",
+      type: 'list',
       choices: ["All Departments", "All Team Roles", "All Employees", "Add Department", "Add Team Role", "Add Employee", "Update Employee", "Exit"],
+      message: "Please select an option from the list below to continue",
+      name: 'selections',
     }
+    // {
+    //   type: 'list',
+    //   choices: ["View All Departments", "View All Roles", "View All Employees", "Add a Department", "Add a Role", "Add an Employee", "Update Employee Role", "Quit"],
+    //   message: 'Please select one from the list below.',
+    //   name: 'selections',
+    // }
   ]).then((ans => {
       //Checks to see if all departments selected
     if(ans.selections === "All Departments") {
@@ -63,7 +69,7 @@ const registry = () => {
       updateEmployee()
       //Checks to see if Exit is selected
     }else {
-      console.log("Thank You, have a nice day!")
+      console.log("Thank You, have a nice day!");
     }}
 ))};
 registry()
@@ -127,10 +133,9 @@ const genEmployee = () =>{
       message: "Employee's last name?",
   },
   {
-      type: 'list',
+      type: 'input',
       name: 'role',
-      message: "Employee Role?",
-      choices: 'SELECT role.title AS name, role.id AS value FROM role',
+      message: "Employee Role? Please enter role ID",
   },
   {
       type: 'input',

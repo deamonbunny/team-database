@@ -10,7 +10,7 @@ VALUES  ("Front End Dev", 75000, 1),
         ("Back End Dev", 90000, 2),
         ("Full Stack Dev", 105000, 3);
 
-INSERT INTO employee (first_name,last_name,role_id,manager_id)
+INSERT INTO employee(first_name, last_name, role_id, manager_id)
 VALUES  ("Alex", "Palson", 3, null),
         ("Sigmund", "Freud", 1, 8),
         ("John", "Jones", 2, 7),
@@ -20,3 +20,13 @@ VALUES  ("Alex", "Palson", 3, null),
         ("Meryl", "Stark", 2, null),
         ("Butch", "Cassidy", 1, null),
         ("Sundance", "Kid", 3, 1);
+
+-- VALUES  ("Alex", "Palson", 3),
+--         ("Sigmund", "Freud", 1),
+--         ("John", "Jones", 2),
+--         ("Ayaka", "Kirihara", 1),
+--         ("Harold", "Jenkins", 3),
+--         ("Thomas", "Goat", 2),
+--         ("Meryl", "Stark", 2),
+--         ("Butch", "Cassidy", 1),
+--         ("Sundance", "Kid", 3);        
